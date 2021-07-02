@@ -1,0 +1,51 @@
+{
+  "name": "@garfish/react",
+  "version": "0.0.30",
+  "description": "garfish module.",
+  "keywords": [
+    "garfish",
+    "micro frontend",
+    "microfrontend",
+    "micro frontends",
+    "micro-frontend",
+    "micro-frontends"
+  ],
+  "author": "wangchao.dennis <wangchao.dennis@bytedance.com>",
+  "homepage": "https://github.com/bytedance/garfish",
+  "license": "Apache-2.0",
+  "main": "dist/garfish-react.cjs.js",
+  "module": "dist/garfish.esm-bundler.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bytedance/garfish.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bytedance/garfish/issues"
+  },
+  "scripts": {},
+  "types": "./index.d.ts",
+  "buildOptions": {
+    "name": "GarfishReact",
+    "devTemplate": "module",
+    "formats": [
+      "esm-bundler",
+      "esm-browser",
+      "cjs",
+      "umd"
+    ]
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.0",
+    "garfish": "^0.0.30"
+  },
+  "peerDependencies": {
+    "garfish": "^0.0.30",
+    "react-dom": "^16.8.0 || ^17.0.0",
+    "react": "^16.8.0 || ^17.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "gitHead": "65a4fb7ff7d6dad9507b1ff95664f55b6f86a2e2"
+}

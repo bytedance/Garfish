@@ -16,7 +16,7 @@
     "build": "node scripts/build.js",
     "build:all": "node scripts/build.js -m -e",
     "build:docs": "lerna run build --stream --scope garfish-docs",
-    "build:watch": "lerna exec -- yarn link && node scripts/build.js -m -e  -f=esm-bundler -w",
+    "build:watch": "lerna exec -- node scripts/build.js -m -e  -f=esm-bundler -w",
     "reset": "lerna clean --yes && rm -rf node_modules",
     "setup": "yarn reset && yarn install",
     "prepublishOnly": "yarn test && yarn build:all && yarn changelog",

@@ -1,7 +1,7 @@
 // fork from https://github.com/webpack/tapable
 
 export { SyncHook } from './SyncHook';
-export { SyncBailHook } from './SyncHook';
+export { SyncBailHook } from './SyncBailHook';
 export { AsyncParallelHook } from './AsyncParallelHook';
 export { AsyncParallelBailHook } from './AsyncParallelBailHook';
 export { AsyncSeriesHook } from './AsyncSeriesHook';

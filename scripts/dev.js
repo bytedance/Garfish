@@ -73,8 +73,8 @@ async function run() {
   }
 
   // install all deps
-  await transfer(pkgDir, pkgDevDir, buildOptions);
-  await sleep(100);
+  // await transfer(pkgDir, pkgDevDir, buildOptions);
+  // await sleep(100);
 
   if (buildOptions.devTemplate === 'module') {
     devServer(pkgDevDir);

@@ -20,7 +20,8 @@ GarfishInstance.run({
       entry: 'http://localhost:9090',
     },
   ],
-  autoRefreshApp: false,
+  // FIXME：这里存在类型错误
+  // autoRefreshApp: false,
   disablePreloadApp: true,
   sandbox: {
     open: true,

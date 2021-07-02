@@ -5,6 +5,7 @@ import { interfaces } from '../interface';
 export class Component {
   public name: string;
   public cjsModules: Record<string, any>;
+  public module: { exports: any };
   public componentInfo: interfaces.ComponentInfo;
   public esModule: boolean = false;
   public manager: interfaces.ComponentManagerInterface;
@@ -20,10 +21,13 @@ export class Component {
     this.name = componentInfo.name;
     this.componentInfo = componentInfo;
     this.manager = manager;
-    this.cjsModules = {
+    this.module = {
       exports: {},
-      module: this.cjsModules,
-      require: (_key: string) => context.externals[_key],
+    };
+    this.cjsModules = {
+      exports: this.module.exports,
+      module: this.module,
+      require: (_key) => context.externals[_key],
     };
     this.init();
   }

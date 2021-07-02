@@ -4,7 +4,7 @@
   "description": "main template",
   "main": "index.js",
   "scripts": {
-    "start": "node linkdeps.js && webpack-dev-server"
+    "start": "webpack-dev-server"
   },
   "author": "Bytedance",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "ts-loader": "^8.0.0",
     "vue": "^2.6.11",
     "vue-router": "^3.4.2",
-    "garfish": "^0.0.24",
+    "garfish": "^0.0.30",
     "vuex": "^3.5.1"
   }
 }

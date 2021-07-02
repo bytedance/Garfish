@@ -2,19 +2,23 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Modal, Button } from 'antd';
+import { useModuleComponents, garfish } from '@garfish/react';
 import 'antd/dist/antd.css';
 
-// let cur = document.querySelector('#root');
-// setTimeout(() => {
-//   console.log(cur, document);
-//   while (cur !== document && cur) {
-//     cur = cur && cur.parentNode;
-//     console.log(cur);
-//   }
-// }, 3000);
+garfish.setExternal({
+  react: require('react'),
+  'react-dom': require('react-dom'),
+});
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const [MicroComp] = useModuleComponents([
+    {
+      name: 'react-comp',
+      url: 'https://unpkg.com/garfish-react-components@1.0.3/dist/bundle.js',
+    },
+  ]);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -36,6 +40,7 @@ function App() {
       <Button type="primary" onClick={showModal}>
         Open Modal
       </Button>
+      <MicroComp />
       <Modal
         title="Basic Modal"
         visible={isModalVisible}
@@ -64,24 +69,5 @@ function App() {
     </div>
   );
 }
-// console.log(document.createElement('div').contains(document.body));
-// console.log(window.a.a.b);
-// class MyComponent extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.myRef = React.createRef();
-//   }
-//   componentDidMount() {
-//     setTimeout(()=>{
-//       // console.log(this.myRef.current);
-//       console.log(this.myRef.current.contains(document.createElement('div')))
-//     }, 2000)
-//   }
-//   render() {
-//     return <div id="woshi" ref={this.myRef} >
-//       hello
-//     </div>;
-//   }
-// }
-// export default MyComponent;
+
 export default App;

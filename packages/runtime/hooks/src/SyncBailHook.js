@@ -4,8 +4,8 @@
 //
 'use strict';
 
-const Hook = require('./Hook');
-const HookCodeFactory = require('./HookCodeFactory');
+import Hook from './Hook';
+import HookCodeFactory from './HookCodeFactory';
 
 class SyncBailHookCodeFactory extends HookCodeFactory {
   content({ onError, onResult, resultReturns, onDone, rethrowIfPossible }) {

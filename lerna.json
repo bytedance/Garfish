@@ -6,7 +6,8 @@
       "ignoreChanges": [
         "ignored-file",
         "*.md",
-        "packages/tools/*"
+        "packages/tools/*",
+        "dev/*"
       ],
       "message": "chore(release): publish",
       "registry": "https://registry.npmjs.org"
@@ -22,6 +23,7 @@
   "packages": [
     "packages/runtime/*",
     "packages/tools/*",
+    "dev/*",
     "website"
   ]
 }
