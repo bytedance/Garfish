@@ -41,7 +41,8 @@ export default {
   }),
   methods: {
     alertError (){
-      throw Error('subApp normal error');
+      // throw Error('subApp normal error');
+      window.a.a.a = true;
     },
     changeData() {
       this.text = this.text === 'parent' ? 'parent text' : 'parent'

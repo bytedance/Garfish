@@ -1,33 +1,48 @@
-import { transformUrl } from '@garfish/utils';
+import { __extends, transformUrl, hookObjectProperty } from '@garfish/utils';
 import { Sandbox } from '../sandbox';
 
 // When dealing with hot updates, "ho-update.json" requires a proxy across domains
 export function XMLHttpRequestModule(sandbox: Sandbox) {
-  let override;
   const baseUrl = sandbox.options.baseUrl;
+  let restoreOpen = null;
+  class XMLHttpRequestPatch extends XMLHttpRequest {
+    constructor() {
+      super();
+    }
+  }
 
+  function fetchPatch(req, options = {}) {
+    return window.fetch && window.fetch(req, options);
+  }
+
+  // Object.setPrototypeOf(XMLHttpRequestPatch, XMLHttpRequest.prototype);
   if (typeof baseUrl === 'string') {
-    override = function () {
-      const result = new XMLHttpRequest();
-      const nativeOpenMethod = result.open;
+    restoreOpen = hookObjectProperty(
+      XMLHttpRequestPatch.prototype,
+      'open',
+      function (send) {
+        return function (...args) {
+          const path = args[1];
+          const isHotJson =
+            typeof path === 'string' && path.endsWith('hot-update.json');
 
-      result.open = function () {
-        const path = arguments[1];
-        const isHotJson =
-          typeof path === 'string' && path.endsWith('hot-update.json');
-
-        if (isHotJson && arguments[0]?.toLowerCase() === 'get') {
-          arguments[1] = transformUrl(baseUrl, path);
-        }
-        return nativeOpenMethod.apply(this, arguments);
-      };
-      return result;
-    };
+          if (isHotJson && arguments[0]?.toLowerCase() === 'get') {
+            args[1] = transformUrl(baseUrl, path);
+          }
+          return send.apply(this, args);
+        };
+      },
+    )();
   }
 
   return {
     override: {
-      XMLHttpRequest: override || XMLHttpRequest,
+      XMLHttpRequest: XMLHttpRequestPatch as any,
+      fetch: window.fetch ? fetchPatch : undefined,
+      recover() {
+        restoreOpen && restoreOpen();
+        // window.fetch && fetchPatch();
+      },
     },
   };
 }

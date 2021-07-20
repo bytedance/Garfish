@@ -4,7 +4,7 @@ import { Sandbox } from '../sandbox';
 type Opts = boolean | AddEventListenerOptions;
 type Listener = EventListenerOrEventListenerObject;
 
-export function listenerModule(sandbox: Sandbox) {
+export function listenerModule(_sandbox: Sandbox) {
   const listeners = new Map<string, Listener[]>();
   const rawAddEventListener = window.addEventListener;
   const rawRemoveEventListener = window.removeEventListener;
@@ -17,7 +17,7 @@ export function listenerModule(sandbox: Sandbox) {
     rawAddEventListener.call(
       this,
       type,
-      filterAndWrapEventListener(type, listener, sandbox.options.sourceList),
+      // filterAndWrapEventListener(type, listener, sandbox.options.sourceList),
       listener,
       options,
     );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { esModule, loadModule, cacheModules } from '@garfish/remote-module';
 import logo from './logo.svg';
 import './App.css';

@@ -14,7 +14,7 @@ let asyncTime = function () {
 GarfishInstance.run({
   basename: '/garfish_master',
   domGetter: async () => {
-    await asyncTime();
+    // await asyncTime();
     return document.querySelector('#submoduleByRouter');
   },
   apps: [
@@ -32,7 +32,7 @@ GarfishInstance.run({
     },
   ],
   autoRefreshApp: true,
-  // disablePreloadApp: true,
+  disablePreloadApp: true,
   sandbox: {
     open: true,
     snapshot: false,

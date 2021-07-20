@@ -180,6 +180,7 @@ export function filterAndWrapEventListener(
       // Through error stack source file, and the source of the static resources determine whether the current error belongs to the current application
       // if belong to the current application environment monitoring error
       if (sourceList) {
+        console.log('**********', computeErrorUrl(e));
         const res = sourceList.find((item) => {
           return item.indexOf(computeErrorUrl(e)) !== -1;
         });

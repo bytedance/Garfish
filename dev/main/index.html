@@ -7,7 +7,7 @@
     b { cursor: pointer; }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mobx/5.15.7/mobx.umd.js"></script>
-  <script>
+  <!-- <script>
   //   window.addEventListener('error',function (...args) {
   //     console.log('mainApp: normal error',args)
   //   });
@@ -18,12 +18,28 @@
   //   window.onerror = function (...args) {
   //     console.log('mainApp onerror: unhandledrejection error',args);
   //   }
-  // </script>
-
+  // </script> -->
   <script>
-    // setTimeout(()=>{
-    //   throw Error('mainApp: unhandledrejection error');
-    // },5000)
+    setTimeout(()=>{
+      const xhr = new XMLHttpRequest()
+      xhr.open('get', 'http://localhost:2333/mainApp', true);
+      xhr.onreadystatechange = function () {
+        if(xhr.readyState !== 4) {
+          return
+        }
+        if(xhr.status >= 200 && xhr.status < 300) {
+          console.log('main xhr')
+        }
+      }
+      xhr.send(null)
+      fetch('http://localhost:2333/fetch/mainApp').then((res)=> {});
+      throw Error('mainApp: unhandledrejection error');
+    },5000);
+
+
+    window.addEventListener('load',function(){
+      console.log('触发了 onload main');
+    });
   </script>
   <script>
       // window.addEventListener('unhandledrejection', event => {

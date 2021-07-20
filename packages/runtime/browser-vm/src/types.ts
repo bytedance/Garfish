@@ -23,7 +23,7 @@ export interface SandboxOptions {
   openSandbox?: boolean;
   strictIsolation?: boolean;
   modules?: Array<Module>;
-  sourceList?: Array<string>;
+  sourceList?: Array<{ tagName: string; url: string }>;
   loaderOptions?: LoaderOptions;
   el?: () => Element | ShadowRoot | null;
   protectVariable?: () => Array<PropertyKey>;

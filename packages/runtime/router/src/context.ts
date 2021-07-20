@@ -66,8 +66,10 @@ export interface RouterInterface {
   push: ({
     path,
     query,
+    basename,
   }: {
     path: string;
+    basename?: string;
     query?: {
       [key: string]: string;
     };
@@ -75,8 +77,10 @@ export interface RouterInterface {
   replace: ({
     path,
     query,
+    basename,
   }: {
     path: string;
+    basename?: string;
     query?: {
       [key: string]: string;
     };

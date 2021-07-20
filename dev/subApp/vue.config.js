@@ -1,5 +1,5 @@
 // const SlardarWebpackPlugin = require('@slardar/webpack-plugin');
-// const GarfishPlugin = require('../../packages/tool/webpack-plugin');
+// const GarfishPlugin = require('../../packages/tool/webpack-plugin');s
 const webpack = require('webpack');
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
     config.output.libraryTarget = 'umd';
     config.output.globalObject = 'window';
     config.devtool = 'source-map';
-    config.mode = 'development';
+    config.mode = 'production';
     config.optimization.minimize = true;
 
     config.plugins = [

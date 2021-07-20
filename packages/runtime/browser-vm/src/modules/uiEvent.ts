@@ -16,6 +16,17 @@ export function MouseEventPatch(
 }
 
 export function UiEventOverride() {
+  class MouseEventPatch extends MouseEvent {
+    constructor(typeArg: string, mouseEventInit?: MouseEventInit) {
+      if (
+        mouseEventInit &&
+        objectToString.call(mouseEventInit.view) === '[object Window]'
+      ) {
+        mouseEventInit.view = window;
+      }
+      super(typeArg, mouseEventInit);
+    }
+  }
   return {
     override: {
       MouseEvent: MouseEventPatch as any,
